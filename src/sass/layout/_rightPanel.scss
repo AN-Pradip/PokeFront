@@ -1,0 +1,21 @@
+#rightPanel{
+    background-color: $main-bg-color;
+    box-sizing: border-box;
+    position: relative;
+    height: 100%;
+    width: 50%;
+    display: grid;
+    grid-template-rows: 24% repeat(4, 19%);
+    border-bottom: solid black 3px;
+    border-bottom-right-radius: 10px;
+    &::before{
+        content: '';
+        position: absolute;
+        left: -3px;
+        bottom: 0;
+        width: 100%;
+        height: 530px;
+        border-right: solid black 3px;
+        border-bottom-right-radius: 7px;
+    }
+}
