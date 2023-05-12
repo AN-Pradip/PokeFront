@@ -28,7 +28,8 @@ function App() {
     .then((data) => setPokemonSprites(data.sprites))
     .catch(function (error) {
         console.log("ERROR: pokemon not found " + error.status)
-        setPokemonSprites(false)
+        setPokemonSprites(false);
+        setPokemonName("Error!")
     })
   }
 
