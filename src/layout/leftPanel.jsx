@@ -1,10 +1,13 @@
 import React from "react";
 import TopLights from "../components/Top-Lights";
+import MainScreen from "../components/MainScreen";
 
-function LeftPanel(){
+
+function LeftPanel(props){
     return(
         <div id="leftPanel">
             <TopLights/>
+            <MainScreen/>
         </div>
     )
 }

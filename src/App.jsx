@@ -1,42 +1,47 @@
 import React, { useEffect, useState, useRef }from "react";
-
 import LeftPanel from "./layout/leftPanel";
 import RightPanel from "./layout/rightpanel";
-
+import {PokemonContext} from "./PokemonContext"
 
 function App() {
+  const [pokemonName, setPokemonName] = useState("pikachu");
+  const [pokemonSprites, setPokemonSprites] = useState(false)
+
 
   const pokemonNameRef = useRef(undefined);
-  const [pokemonName, setpokemonName] = useState("notAPokemon");
   useEffect(() => {
     //Search each time pokemonName is changed
     SearchPokemon(pokemonName)
-  });
+    }, [pokemonName]);
 
+  //prevent refresh & set searched pokemon name to lower case
   function handleSubmit(event){
     event.preventDefault();
-    setpokemonName(pokemonNameRef.current.value)
+    setPokemonName(pokemonNameRef.current.value.toLowerCase())
   }
+
   async function SearchPokemon(pokemonName){
-    console.log(pokemonName)
     await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
       method: "GET"
     })
     .then(response => response.json())
-    .then((data) => console.log(data))
+    .then((data) => setPokemonSprites(data.sprites))
     .catch(function (error) {
         console.log("ERROR: pokemon not found " + error.status)
+        setPokemonSprites(false)
     })
   }
 
   return (
-    <div id="pokedexWrapper">
-      <form onSubmit={handleSubmit}>
-        <input type="text" id="SearchBox" placeholder="Type a pokemon name" ref={pokemonNameRef}/>
-      </form>
-      <LeftPanel />
-      <RightPanel />
-    </div>
+    <PokemonContext.Provider value={{pokemonName, pokemonSprites}}>
+      <div id="pokedexWrapper">
+        <form onSubmit={handleSubmit}>
+          <input type="text" id="SearchBox" placeholder="Type a pokemon name" ref={pokemonNameRef}/>
+        </form>
+        <LeftPanel/>
+        <RightPanel />
+      </div>
+    </PokemonContext.Provider>
   );
 }
 
