@@ -5,7 +5,7 @@ import {PokemonContext} from "./PokemonContext"
 
 function App() {
   const [pokemonName, setPokemonName] = useState("pikachu");
-  //const [pokemonID, setPokemonID] = useState()
+  const [pokemonID, setPokemonID] = useState()
   const [pokemonSprites, setPokemonSprites] = useState(false)
 
   const pokemonNameRef = useRef(undefined);
@@ -27,8 +27,8 @@ function App() {
     .then(response => response.json())
     .then((data) => {
       setPokemonSprites(data.sprites);
-      //setPokemonID(data.id);
-      setPokemonName(data.name)
+      setPokemonID(data.id);
+      setPokemonName(data.name);
     })
     .catch(function (error) {
         console.log("ERROR: pokemon not found " + error.status)
@@ -38,7 +38,7 @@ function App() {
   }
 
   return (
-    <PokemonContext.Provider value={{pokemonName, pokemonSprites}}>
+    <PokemonContext.Provider value={{pokemonName, pokemonSprites, setPokemonName, pokemonID}}>
       <div id="pokedexWrapper">
         <form onSubmit={handleSubmit}>
           <input type="text" id="SearchBox" placeholder="Type a pokemon name or id" ref={pokemonNameRef}/>

@@ -3,7 +3,6 @@ import { PokemonContext } from "../PokemonContext";
 
 function MainScreen(){
     const {pokemonSprites} = useContext(PokemonContext)
-    console.log(pokemonSprites)
     return(
         <div>
             <div className="screen">
