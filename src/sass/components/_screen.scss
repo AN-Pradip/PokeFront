@@ -1,0 +1,26 @@
+  .screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &-container{
+        width: 18.75rem;
+        height: 18.75rem;
+        border: solid black;
+        border-radius: 0 0 0 17%;
+        display: grid;
+        grid-template-rows: 10% 72% 18%;
+        background-color: white;
+    }
+    &-main{
+        grid-row-start: 2;
+        height: 100%;
+        width: 80%;
+        justify-self: center;
+        background-color: $main-screen-bg-color;
+        border: solid black 2px;
+        border-radius: 5%;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+    }

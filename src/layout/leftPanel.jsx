@@ -3,7 +3,7 @@ import TopLights from "../components/Top-Lights";
 import MainScreen from "../components/MainScreen";
 
 
-function LeftPanel(props){
+function LeftPanel(){
     return(
         <div id="leftPanel">
             <TopLights/>

@@ -103,6 +103,33 @@
   border-radius: 0.5rem;
 }
 
+.screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.screen-container {
+  width: 18.75rem;
+  height: 18.75rem;
+  border: solid black;
+  border-radius: 0 0 0 17%;
+  display: grid;
+  grid-template-rows: 10% 72% 18%;
+  background-color: white;
+}
+.screen-main {
+  grid-row-start: 2;
+  height: 100%;
+  width: 80%;
+  justify-self: center;
+  background-color: #98cb98;
+  border: solid black 2px;
+  border-radius: 5%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
 #pokedexWrapper {
   height: 42.75rem;
   width: 57rem;

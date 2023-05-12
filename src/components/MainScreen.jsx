@@ -1,17 +1,18 @@
 import React, {useContext} from "react";
 import { PokemonContext } from "../PokemonContext";
 
-function MainScreen(props){
+function MainScreen(){
     const {pokemonSprites} = useContext(PokemonContext)
+    console.log(pokemonSprites)
     return(
         <div>
-            {pokemonSprites ?
-            <div className="screen-container">
-                <div className="screen">
-                    <img src={pokemonSprites.front_default} alt="pokemonImage" />
+            <div className="screen">
+                <div className="screen-container">
+                    {pokemonSprites ?
+                    <div className="screen-main" style={{backgroundImage: `url(${pokemonSprites.front_default})`}}> </div>
+                    : <div className="screen-main-error" ></div>}
                 </div>          
             </div>
-            : <div> nothing </div>}
         </div>
     )
 }
