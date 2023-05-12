@@ -8,9 +8,11 @@
 @import "./components/searchBox";
 @import "./components/screen";
 @import "./components/greenScreen";
+@import "./components/dPadElements";
 
 //LAYOUT
 @import "./layout/pokedex";
 @import "./layout/leftPanel";
 @import "./layout/rightPanel";
 @import "./layout/bottomContainer";
+@import "./layout/dPadContainer";

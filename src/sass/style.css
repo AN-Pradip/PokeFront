@@ -152,6 +152,56 @@
   overflow-wrap: break-word;
 }
 
+.Dpad-top {
+  grid-column-start: 2;
+  grid-row-start: span 2;
+  background-color: #585858;
+  border-radius: 0.5rem 0.5rem 0 0;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+.Dpad-left {
+  grid-column-start: 1;
+  grid-row-start: 3;
+  background-color: #585858;
+  border-radius: 0.5rem 0 0 0.5rem;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.Dpad-center {
+  grid-column-start: 2;
+  grid-row-start: 3;
+  background-color: #585858;
+  border: -2px solid black;
+}
+.Dpad-center .dot {
+  height: 50%;
+  width: 50%;
+  border: 0.2rem solid black;
+  border-radius: 50%;
+  display: inline-block;
+}
+.Dpad-right {
+  grid-column-start: 3;
+  grid-row-start: 3;
+  background-color: #585858;
+  border-radius: 0 0.5rem 0.5rem 0;
+  border-top: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+.Dpad-bottom {
+  grid-column-start: 2;
+  grid-row: 4/6;
+  background-color: #585858;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+  border-bottom: 2px solid black;
+}
+
 #pokedexWrapper {
   height: 42.75rem;
   width: 57rem;
@@ -199,6 +249,13 @@
 .bottomContainer {
   display: grid;
   grid-template-columns: 10% 50% 40%;
+}
+
+.Dpad {
+  display: grid;
+  grid-template-columns: 3rem 1.5rem 3rem;
+  grid-template-rows: 1.5rem 1.5rem 1.5rem 1.5rem 1.5rem;
+  justify-self: center;
 }
 
 /*# sourceMappingURL=style.css.map */
