@@ -4,41 +4,36 @@ import RightPanel from "./layout/rightpanel";
 import {PokemonContext} from "./PokemonContext"
 
 function App() {
-  const [pokemonName, setPokemonName] = useState("pikachu");
-  const [pokemonID, setPokemonID] = useState()
-  const [pokemonSprites, setPokemonSprites] = useState(false)
+  const [pokemonInfo, setPokemonInfo] = useState({name: "pikachu"})
 
   const pokemonNameRef = useRef(undefined);
   useEffect(() => {
-    //Search each time pokemonName is changed
-    SearchPokemon(pokemonName)
-    }, [pokemonName]);
+    //Search each time pokemon name is changed
+    SearchPokemon(pokemonInfo)
+    }, [pokemonInfo.name]);
 
   //prevent refresh & set searched pokemon name to lower case
   function handleSubmit(event){
     event.preventDefault();
-    setPokemonName(pokemonNameRef.current.value.toLowerCase())
+    setPokemonInfo({name: pokemonNameRef.current.value.toLowerCase()})
   }
 
-  async function SearchPokemon(pokemonName){
-    await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, {
+  async function SearchPokemon(pokemonInfo){
+    await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonInfo.name}`, {
       method: "GET"
     })
     .then(response => response.json())
     .then((data) => {
-      setPokemonSprites(data.sprites);
-      setPokemonID(data.id);
-      setPokemonName(data.name);
+      let copyOfPokemonInfo = {name: data.name, sprites: data.sprites,id: data.id, height: data.height, weight: data.weight};
+      setPokemonInfo(copyOfPokemonInfo)
     })
     .catch(function (error) {
         console.log("ERROR: pokemon not found " + error.status)
-        setPokemonSprites(false);
-        setPokemonName("Error!")
     })
   }
 
   return (
-    <PokemonContext.Provider value={{pokemonName, pokemonSprites, setPokemonName, pokemonID}}>
+    <PokemonContext.Provider value={{pokemonInfo, setPokemonInfo}}>
       <div id="pokedexWrapper">
         <form onSubmit={handleSubmit}>
           <input type="text" id="SearchBox" placeholder="Type a pokemon name or id" ref={pokemonNameRef}/>

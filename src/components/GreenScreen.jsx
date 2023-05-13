@@ -2,10 +2,10 @@ import React, {useContext} from "react";
 import { PokemonContext } from "../PokemonContext";
 
 function GreenScreen(){
-    const {pokemonName} = useContext(PokemonContext)
+    const {pokemonInfo} = useContext(PokemonContext)
     return(
         <div className="GreenScreen">
-            <span id="name-screen">{pokemonName}</span>
+            <span id="name-screen">{pokemonInfo.name}</span>
         </div>
     )
 }
