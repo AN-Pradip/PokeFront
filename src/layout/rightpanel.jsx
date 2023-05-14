@@ -1,5 +1,6 @@
 import React from "react";
 import DescScreen from "../components/DescScreen"
+import Buttons from "./buttons"
 
 function RightPanel(){
     const polyStyle1 = {
@@ -28,6 +29,7 @@ function RightPanel(){
                 </svg>
             </div>
             <DescScreen/>
+            <Buttons/>
         </div>
     )
 }
