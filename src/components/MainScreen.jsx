@@ -2,19 +2,30 @@ import React, { useContext} from "react";
 import { PokemonContext } from "../PokemonContext";
 
 function MainScreen(){
-    const {pokemonInfo} = useContext(PokemonContext)
-    const {pokemonRender} = useContext(PokemonContext)
+    const {pokemonInfo, pokemonRender, shiny} = useContext(PokemonContext)
 
     return(
         <div>
             <div className="screen">
                 <div className="screen-container">
                     {
-                    pokemonInfo.sprites && pokemonRender === "front_default" 
+                    //Display front_default
+                    pokemonInfo.sprites && pokemonRender === "front_default" && !shiny
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_default})`}}> </div> 
-                    : pokemonInfo.sprites && pokemonRender === "front_female" 
+                    //Display front_female
+                    : pokemonInfo.sprites && pokemonRender === "front_female" && pokemonInfo.sprites.front_female != null && !shiny
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_female})`}}> </div> 
-                    : <div className="screen-main-error"></div>
+                    //Display front_shiny_female
+                    : pokemonInfo.sprites && pokemonRender === "front_female" && pokemonInfo.sprites.front_shiny_female != null && shiny 
+                        ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny_female})`}}> </div> 
+                    //Display front_shiny
+                    : pokemonInfo.sprites && pokemonRender === "front_default" && shiny 
+                        ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny})`}}> </div> 
+                    //Display front_shiny if female === null
+                    : pokemonInfo.sprites && shiny && pokemonInfo.sprites.front_female_shiny != null
+                        ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny})`}}> </div>
+                    //Else display front_default
+                    : <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_default})`}}> </div> 
                     }
                 </div>          
             </div>

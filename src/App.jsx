@@ -7,6 +7,7 @@ function App() {
   const [pokemonInfo, setPokemonInfo] = useState({name: "pikachu",id: 25, sprites: {front_default: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/25.png"}})
   const [pokemonGender, setPokemonGender] = useState(4)
   const [pokemonRender, setPokemonRender] = useState("front_default")
+  const [shiny, setShiny] = useState(false)
 
   const pokemonNameRef = useRef(undefined);
   useEffect(() => {
@@ -36,7 +37,7 @@ function App() {
   }
 
   return (
-    <PokemonContext.Provider value={{pokemonInfo, setPokemonInfo, pokemonGender, setPokemonGender, pokemonRender, setPokemonRender}}>
+    <PokemonContext.Provider value={{pokemonInfo, setPokemonInfo, pokemonGender, setPokemonGender, pokemonRender, setPokemonRender, shiny, setShiny}}>
       <div id="pokedexWrapper">
         <form onSubmit={handleSubmit}>
           <input type="text" id="SearchBox" placeholder="Type a pokemon name or id" ref={pokemonNameRef}/>

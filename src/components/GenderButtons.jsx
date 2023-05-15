@@ -3,10 +3,7 @@ import { PokemonContext } from "../PokemonContext";
 
 function GenderButtons(){
     
-    const {pokemonGender} = useContext(PokemonContext);
-    const {setPokemonGender} = useContext(PokemonContext);
-    const {setPokemonRender} = useContext(PokemonContext);
-    const {pokemonInfo} = useContext(PokemonContext);
+    const {pokemonGender, setPokemonGender, setPokemonRender, pokemonInfo} = useContext(PokemonContext);
 
     useEffect(() => {
         //Search pokemon gender each time pokemon name is changed
