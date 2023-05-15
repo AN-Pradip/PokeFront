@@ -7,13 +7,13 @@ function Dpad(){
 
     return(
         <div className="Dpad">
-            <div className="Dpad-top" onClick={() => setPokemonInfo({name: pokemonInfo.id+1, id: pokemonInfo.id+1})}></div>
+            <div className="Dpad-top" onClick={() => {setPokemonInfo({...pokemonInfo, name: pokemonInfo.id+1})}}></div>
             <div className="Dpad-left"></div>
             <div className="Dpad-center">
                 <span className="dot"></span>
             </div>
             <div className="Dpad-right"></div>
-            <div className="Dpad-bottom" onClick={() => setPokemonInfo({name: pokemonInfo.id-1, id: pokemonInfo.id-1})} ></div>
+            <div className="Dpad-bottom" onClick={() => setPokemonInfo({...pokemonInfo, name: pokemonInfo.id-1})} ></div>
         </div>
     )
 }
