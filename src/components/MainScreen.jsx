@@ -15,17 +15,20 @@ function MainScreen(){
                     //Display front_female
                     : pokemonInfo.sprites && pokemonRender === "front_female" && pokemonInfo.sprites.front_female != null && !shiny
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_female})`}}> </div> 
+                    //Display front_default if gender female but no url
+                    : pokemonInfo.sprites && pokemonRender === "front_female" && pokemonInfo.sprites.front_female === null && !shiny
+                        ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_default})`}}> </div> 
                     //Display front_shiny_female
                     : pokemonInfo.sprites && pokemonRender === "front_female" && pokemonInfo.sprites.front_shiny_female != null && shiny 
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny_female})`}}> </div> 
                     //Display front_shiny
                     : pokemonInfo.sprites && pokemonRender === "front_default" && shiny 
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny})`}}> </div> 
-                    //Display front_shiny if female === null
-                    : pokemonInfo.sprites && shiny && pokemonInfo.sprites.front_female_shiny != null
+                    //Display front_shiny if gender female but no url
+                    : pokemonInfo.sprites && shiny && pokemonInfo.sprites.front_shiny_female === null
                         ? <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_shiny})`}}> </div>
-                    //Else display front_default
-                    : <div className="screen-main" style={{backgroundImage: `url(${pokemonInfo.sprites.front_default})`}}> </div> 
+                    //Else display error
+                    : <div className="screen-main"> </div> 
                     }
                 </div>          
             </div>

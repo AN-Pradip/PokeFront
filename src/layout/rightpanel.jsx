@@ -1,6 +1,7 @@
 import React from "react";
 import DescScreen from "../components/DescScreen"
 import Buttons from "./buttons"
+import TypeScreen from "../components/TypeScreen"
 
 function RightPanel(){
     const polyStyle1 = {
@@ -30,6 +31,7 @@ function RightPanel(){
             </div>
             <DescScreen/>
             <Buttons/>
+            <TypeScreen/>
         </div>
     )
 }

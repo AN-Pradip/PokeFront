@@ -8,7 +8,7 @@ function GenderButtons(){
     useEffect(() => {
         //Search pokemon gender each time pokemon name is changed
         SearchPokemonGender(pokemonInfo)
-        }, [pokemonInfo.name]);
+    }, [pokemonInfo.name]);
 
     //fetch pokemon gender
     async function SearchPokemonGender(pokemonInfo){

@@ -28,7 +28,7 @@ function App() {
     })
     .then(response => response.json())
     .then((data) => {
-      setPokemonInfo({name: data.name, sprites: data.sprites,id: data.id, height: data.height, weight: data.weight})
+      setPokemonInfo({name: data.name, sprites: data.sprites,id: data.id, height: data.height, weight: data.weight, types:data.types})
       setPokemonRender("front_default")
     })
     .catch(function (error) {
